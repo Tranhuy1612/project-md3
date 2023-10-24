@@ -11,10 +11,10 @@ import java.util.List;
 public class CatalogManager {
     private static ProductController productController = new ProductController();
     private static List<Product> products = productController.findAll();
-    private static CatalogController catalogController = new CatalogController();
-    private static List<Catalog> catalogs = catalogController.findAll();
+    private CatalogController catalogController;
 
-    public CatalogManager() {
+    public CatalogManager(CatalogController catalogController) {
+        this.catalogController = catalogController;
         while (true) {
             System.out.println("\u001B[32m╔══════════════════════════════════════╗");
             System.out.println("\u001B[32m║             Menu-Catalog             ║");
@@ -22,8 +22,8 @@ public class CatalogManager {
             System.out.println("\u001B[32m║   1    │      Hiển thị danh mục      ║");
             System.out.println("\u001B[32m║   2    │      Tạo danh mục           ║");
             System.out.println("\u001B[32m║   3    │      Sửa danh mục           ║");
-            System.out.println("\u001B[32m║   4    │      Xóa danh mục           ║");
-            System.out.println("\u001B[32m║   5    │      Tìm kiếm theo tên      ║");
+//            System.out.println("\u001B[32m║   5    │      Xóa danh mục           ║");
+            System.out.println("\u001B[32m║   4    │      Tìm kiếm theo tên      ║");
             System.out.println("\u001B[32m║   0    │      Trở về                 ║");
             System.out.println("\u001B[32m╚════════╧═════════════════════════════╝");
             System.out.println("Nhập lựa chọn của bạn:                            ");
@@ -41,11 +41,11 @@ public class CatalogManager {
                     //update danh mục
                     updateCatalog();
                     break;
+//                case 5:
+//                    //xóa danh mục
+//                    deleteCatalog();
+//                    break;
                 case 4:
-                    //xóa danh mục
-                    deleteCatalog();
-                    break;
-                case 5:
                     //tìm kiếm theo tên danh mục
                     searchByName();
                     break;
@@ -61,11 +61,15 @@ public class CatalogManager {
 
     public void showCatalog() {
         if (catalogController.findAll().size() == 0) {
-            System.err.println("Chưa có danh mục nào ");
+            System.err.println("Chưa có danh mục nào");
             return;
         }
-        for (Catalog c : catalogs) {
-            System.out.println(c);
+
+        for (Catalog c : catalogController.findAll()) {
+            System.out.println("+————————————————————————————————————————————————————————+ ");
+            System.out.println("|" + c);
+            System.out.println("+————————————————————————————————————————————————————————+ ");
+
         }
     }
 
@@ -79,7 +83,7 @@ public class CatalogManager {
             catalog.inputData();
             for (Catalog c : catalogController.findAll()) {
                 if (c.getName().toLowerCase().equals(catalog.getName().toLowerCase())) {
-                    System.err.println("Tên thương  đã tồn tại");
+                    System.err.println("Tên danh mục đã tồn tại");
                     return;
                 }
             }
@@ -107,32 +111,30 @@ public class CatalogManager {
         catalogController.save(newCatalog);
     }
 
-    public void deleteCatalog() {
-        ProductController productController = new ProductController();
-        List<Product> productList = productController.findAll();
-        if (catalogController.findAll().isEmpty()) {
-            System.err.println("chưa có danh mục nào ");
-            return;
-        }
-        System.out.print(" Nhập mã danh mục cần xoá ");
-        int id = InputMethods.getInteger();
-        if (!productList.isEmpty()) {
-            for (Product p : productList
-            ) {
-                if (p.getCatalog().getId() == id) {
-                    System.err.println("không thể xoá vì vẫn còn sản phẩm của danh mục này này");
-                    return;
-                }
-            }
-        }
-        if (catalogController.findById(id) == null) {
-            System.err.println("không tìm thấy danh mục cần xoá");
-
-        } else {
-            System.out.println(" Đã xoá thành công ✅");
-            catalogController.delete(id);
-        }
-    }
+//    public void deleteCatalog() {
+//        ProductController productController = new ProductController();
+//        List<Product> productList = productController.findAll();
+//        if (catalogController.findAll().isEmpty()) {
+//            System.err.println("chưa có danh mục nào ");
+//            return;
+//        }
+//        System.out.print(" Nhập mã danh mục cần xoá ");
+//        int id = InputMethods.getInteger();
+//        if (!productList.isEmpty()) {
+//            for (Product p : productList) {
+//                if (p.getCatalog().getId() == id) {
+//                    System.err.println("không thể xoá vì vẫn còn sản phẩm của danh mục này này");
+//                    return;
+//                }
+//            }
+//        }
+//        if (catalogController.findById(id) == null) {
+//            System.err.println("không tìm thấy danh mục cần xoá");
+//            return;
+//        }
+//        System.out.println(" Đã xoá thành công ✅");
+//        catalogController.delete(id);
+//    }
 
     public void searchByName() {
         System.out.println("Nhập tên cần tìm :");

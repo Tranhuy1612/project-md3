@@ -87,7 +87,7 @@ public class Product implements Serializable {
     public void inputData(List<Catalog> list) {
         System.out.print("Nhập tên sản phẩm: ");
         this.name = InputMethods.getString();
-        System.out.print("Nhập giá sản phẩm(lớn hơn 0): ");
+        System.out.print("Nhập giá sản phẩm: ");
         this.price = InputMethods.getDouble();
         System.out.print("Nhập vào mô tả: ");
         this.description = InputMethods.getString();
@@ -117,14 +117,13 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        String green = "\u001B[32m";
-        String reset = "\u001B[0m";
-        String header = green + " | Tên sản phẩm       | Giá           | Mô tả            | Kho          |  Danh mục        | Trạng thái\n";
-        String separator = "------------------------------------------------------------------\n";
-        String data = " ID : " + id + " | Tên : " + name + " | Giá : " + price + "đ" + " | Mô tả :" + description +
-                "| Kho : " + stock + " Danh mục :" + catalog.getName() + "| Trạng thái :" + (status ? "Bán" : "không bán");
-        return header + reset + separator + data;
-    }
+        return String.format("%-10s | %-20s | %-10s | %-10s | %-10s | %-10s | %-10s ",
+                "Mã sản phẩm", "Tên sản phẩm", "Giá", "Mô tả", "Trong kho", "Danh mục", " Trạng thái")
+                + "\n" + "-".repeat(100)
+                + String.format("\n%-10s  | %-20s | %-10s | %-10s | %-10s | %-10s | %-10s",
+                id, name, price + " $ ", description, stock, catalog.getName(), (status ? " Đang bán " : " Hết hàng "))
+                + "\n" + "-".repeat(100);
 
+    }
 }
 

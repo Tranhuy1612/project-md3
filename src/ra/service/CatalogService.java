@@ -40,13 +40,8 @@ public class CatalogService implements IGenericService<Catalog, Integer> {
 
     @Override
     public void delete(Integer id) {
-        for (Catalog c : catalogs) {
-            if (c.getId() == id) {
-                catalogs.remove(c);
-                catalogData.writeToFile(catalogs, DataBase.CATALOG_PATH);
-                return;
-            }
-        }
+        catalogs.remove(findById(id));
+        catalogData.writeToFile(catalogs, DataBase.CATALOG_PATH);
     }
 
     @Override

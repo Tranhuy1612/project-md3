@@ -1,5 +1,4 @@
 package ra.view;
-
 import ra.config.InputMethods;
 import ra.controller.CatalogController;
 import ra.controller.ProductController;
@@ -9,10 +8,10 @@ import java.util.List;
 
 public class ProductManager {
     private static CatalogController catalogController = new CatalogController();
-    private static ProductController productController = new ProductController();
-    List<Product> products = productController.findAll();
+    private static ProductController productController;
 
-    public ProductManager() {
+    public ProductManager(ProductController productController) {
+        this.productController = productController;
         while (true) {
             System.out.println("\u001B[32m╔══════════════════════════════════════╗");
             System.out.println("\u001B[32m║          Product-Manager             ║");
@@ -71,6 +70,10 @@ public class ProductManager {
     }
 
     public void createProduct() {
+        if (catalogController.findAll().isEmpty()) {
+            System.err.println("Không có Danh mục . Không thể tạo sản phẩm ");
+            return;
+        }
         System.out.print("Bạn muốn thêm vào bao nhiêu sản phẩm : ");
         int n = InputMethods.getInteger();
         for (int i = 0; i < n; i++) {
@@ -90,13 +93,13 @@ public class ProductManager {
     }
 
     public void deleteProduct() {
-        if (productController.findAll().isEmpty()){
+        if (productController.findAll().isEmpty()) {
             System.err.println("chưa có sản phẩm nào");
             return;
         }
         System.out.print("Nhập vào Mã sản phẩm: ");
         int id = InputMethods.getInteger();
-        if (productController.findById( id ) == null){
+        if (productController.findById(id) == null) {
             System.err.println("không tìm thấy sản phẩm cần xoá");
             return;
         }

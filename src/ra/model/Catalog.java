@@ -37,6 +37,6 @@ public class Catalog implements Serializable {
     }
     @Override
     public String toString() {
-        return "Id : " + id + "| Tên :" + name ;
+        return "Id : " + id + "| Danh mục :" + name ;
     }
 }

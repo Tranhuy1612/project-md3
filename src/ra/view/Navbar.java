@@ -1,6 +1,7 @@
 package ra.view;
 
 import ra.config.InputMethods;
+import ra.controller.CatalogController;
 import ra.controller.OrderController;
 import ra.controller.ProductController;
 import ra.controller.UserController;
@@ -12,6 +13,7 @@ import ra.service.UserService;
 public class Navbar {
     private static UserController userController = new UserController();
     private static ProductController productController = new ProductController();
+    private static CatalogController catalogController = new CatalogController();
     private OrderController orderController;
 
 
@@ -232,11 +234,11 @@ public class Navbar {
                     break;
                 case 2:
                     // quản lí danh mục / mục lục
-                    new CatalogManager();
+                    new CatalogManager(catalogController);
                     break;
                 case 3:
                     // quản lí sản phẩm
-                    new ProductManager();
+                    new ProductManager(productController);
                     break;
                 case 4:
                     // Trang chủ quản lí đặt hàng

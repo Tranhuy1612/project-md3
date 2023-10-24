@@ -39,14 +39,11 @@ public class ProductService implements IGenericService<Product, Integer> {
 
     @Override
     public void delete(Integer id) {
-        for (Product p : products) {
-            if (p.getId() == id) {
-                products.remove(p);
-                productData.writeToFile(products, DataBase.PRODUCT_PATH);
-                return;
-            }
+        Product product = findById(id);
+        if (product != null) {
+            products.remove(product);
+            productData.writeToFile(products, DataBase.PRODUCT_PATH);
         }
-        System.err.println("Id not found !");
     }
 
     @Override
