@@ -36,24 +36,24 @@ public class Main {
         }
 
 ////         fix cứng sp
-        List<Product> list = new ArrayList<>();
-        Product p1 = new Product(1, "Trà sữa thái", 20000, "bestseller", 100, true);
-        Product p2 = new Product(2, "Trà sữa trân châu đường đen", 30000, "béo , ngậy ", 100, true);
-        Product p3 = new Product(3, "Trà nhài", 20000, "thơm", 100, true);
-        Product p4 = new Product(4, "Trà chanh", 15000, "thanh mát", 100, true);
-        Product p5 = new Product(5, "Trà chanh Lô hội", 25000, "ngon", 100, true);
-        Product p6 = new Product(6, "Kem socola", 15000, "ngon", 100, true);
-        Product p7 = new Product(7, "Kem ốc quế", 15000, "ngon", 100, true);
-        Product p8 = new Product(8, "Nước chanh tươi", 10000, "mát", 100, true);
-        list.add(p1);
-        list.add(p2);
-        list.add(p3);
-        list.add(p4);
-        list.add(p5);
-        list.add(p6);
-        list.add(p7);
-        list.add(p8);
-        new DataBase<Product>().writeToFile(list, "C:\\Users\\admin\\Desktop\\ProjectMd3-Huy\\src\\ra\\util\\products.txt");
+//        List<Product> list = new ArrayList<>();
+//        Product p1 = new Product(1, "Trà sữa thái", 20000, "bestseller", 100, true);
+//        Product p2 = new Product(2, "Trà sữa trân châu", 30000, "béo , ngậy ", 100, true);
+//        Product p3 = new Product(3, "Trà nhài", 20000, "thơm", 100, true);
+//        Product p4 = new Product(4, "Trà chanh", 15000, "thanh mát", 100, true);
+//        Product p5 = new Product(5, "Trà chanh Lô hội", 25000, "ngon", 100, true);
+//        Product p6 = new Product(6, "Kem socola", 15000, "ngon", 100, true);
+//        Product p7 = new Product(7, "Kem ốc quế", 15000, "ngon", 100, true);
+//        Product p8 = new Product(8, "Nước chanh tươi", 10000, "mát", 100, true);
+//        list.add(p1);
+//        list.add(p2);
+//        list.add(p3);
+//        list.add(p4);
+//        list.add(p5);
+//        list.add(p6);
+//        list.add(p7);
+//        list.add(p8);
+//        new DataBase<Product>().writeToFile(list, "C:\\Users\\admin\\Desktop\\ProjectMd3-Huy\\src\\ra\\util\\products.txt");
     }
 
 }

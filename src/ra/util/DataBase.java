@@ -10,8 +10,9 @@ public class DataBase<T> {
     public static final String PRODUCT_PATH = "C:\\Users\\admin\\Desktop\\ProjectMd3-Huy\\src\\ra\\util\\products.txt";
     public static final String CATALOG_PATH = "C:\\Users\\admin\\Desktop\\ProjectMd3-Huy\\src\\ra\\util\\catalog.txt";
     public static final String ORDER_PATH = "C:\\Users\\admin\\Desktop\\ProjectMd3-Huy\\src\\ra\\util\\order.txt";
+    public static final String FEEDBACK_PATH = "C:\\Users\\admin\\Desktop\\ProjectMd3-Huy\\src\\ra\\util\\feedback.txt";
 
-    public void writeToFile(List<T> o, String path) {
+    public  void writeToFile(List<T> o, String path) {
         FileOutputStream fos = null;
         ObjectOutputStream oos = null;
         try {

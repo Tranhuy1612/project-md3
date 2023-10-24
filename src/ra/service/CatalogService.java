@@ -68,5 +68,14 @@ public class CatalogService implements IGenericService<Catalog, Integer> {
         }
         return catalogListSearch;
     }
+    public int getNewId() {
+        int max = 0;
+        for (Catalog c : catalogs) {
+            if (c.getId() > max) {
+                max = c.getId();
+            }
+        }
+        return max + 1;
+    }
 }
 

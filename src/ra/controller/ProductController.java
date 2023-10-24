@@ -14,9 +14,7 @@ public class ProductController {
 
     public List<Product> findAll() {
         return productService.findAll();
-    }
-
-    ;
+    };
 
     public Product findById(int id) {
         return productService.findById(id);
@@ -33,5 +31,7 @@ public class ProductController {
     public List<Product> searchByName(String searchName) {
         return productService.searchByName(searchName);
     }
-
+    public int getNewId() {
+        return productService.getNewId();
+    }
 }

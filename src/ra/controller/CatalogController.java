@@ -31,4 +31,7 @@ public class CatalogController {
     public List<Catalog> searchByName(String searchName) {
         return catalogService.searchByName(searchName);
     }
+    public int getNewId() {
+        return catalogService.getNewId();
+    }
 }

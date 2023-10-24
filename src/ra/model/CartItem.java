@@ -42,6 +42,6 @@ public class CartItem implements Serializable {
 
     @Override
     public String toString() {
-        return "ID : "+id + "| productName : " +product.getName()+ "|Price : "+product.getPrice() +"$"+ "| Quantity : "+quantity;
+        return "ID : "+id + "| Tên sản phẩm : " +product.getName()+ "|Giá : "+product.getPrice() +"$"+ "| Số lượng : "+quantity;
     }
 }

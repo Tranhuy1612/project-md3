@@ -3,28 +3,28 @@ package ra.view;
 import ra.config.InputMethods;
 import ra.controller.CatalogController;
 import ra.controller.ProductController;
-import ra.model.Catalog;
 import ra.model.Product;
 
 import java.util.List;
 
 public class ProductManager {
+    private static CatalogController catalogController = new CatalogController();
     private static ProductController productController = new ProductController();
     List<Product> products = productController.findAll();
 
     public ProductManager() {
         while (true) {
             System.out.println("\u001B[32m╔══════════════════════════════════════╗");
-            System.out.println("\u001B[32m║          Product-Manager            \u001B[0m ║");
+            System.out.println("\u001B[32m║          Product-Manager             ║");
             System.out.println("\u001B[32m╟────────┬─────────────────────────────╢");
-            System.out.println("\u001B[34m║   \u001B[32m1    \u001B[34m│       Show Product         \u001B[0m ║");
-            System.out.println("\u001B[34m║   \u001B[32m2    \u001B[34m│       Create Product       \u001B[0m ║");
-            System.out.println("\u001B[34m║   \u001B[32m3    \u001B[34m│       Update Product       \u001B[0m ║");
-            System.out.println("\u001B[34m║   \u001B[32m4    \u001B[34m│       Delete Product       \u001B[0m ║");
-            System.out.println("\u001B[34m║   \u001B[32m5    \u001B[34m│       Search by Name       \u001B[0m ║");
-            System.out.println("\u001B[34m║   \u001B[32m0    \u001B[34m│       Back                 \u001B[0m ║");
-            System.out.println("\u001B[33m╚════════╧═════════════════════════════╝");
-            System.out.println("\u001B[33mEnter your choice:                       \u001B[0m");
+            System.out.println("\u001B[32m║   1    │     Hiển thị sản phẩm       ║");
+            System.out.println("\u001B[32m║   2    │     Tạo sản phẩm            ║");
+            System.out.println("\u001B[32m║   3    │     Sửa sản phẩm            ║");
+            System.out.println("\u001B[32m║   4    │     Xóa sản phẩm            ║");
+            System.out.println("\u001B[32m║   5    │     Tìm kiếm theo tên       ║");
+            System.out.println("\u001B[32m║   0    │     Trở về                  ║");
+            System.out.println("\u001B[32m╚════════╧═════════════════════════════╝");
+            System.out.println("Nhập lựa chọn của bạn:                            ");
             int choice = InputMethods.getInteger();
             switch (choice) {
                 case 1:
@@ -51,7 +51,7 @@ public class ProductManager {
                     Navbar.menuAdmin();
                     break;
                 default:
-                    System.err.println("please enter number from 1 to 5");
+                    System.err.println("vui lòng nhập số từ 1 đến 5");
             }
 
         }
@@ -59,6 +59,10 @@ public class ProductManager {
 
     public static void displayListProduct() {
         ProductController productController = new ProductController();
+        if (productController.findAll().isEmpty()) {
+            System.err.println("Chưa có sản phẩm nào");
+            return;
+        }
         for (Product p : productController.findAll()) {
             if (p.isStatus()) {
                 System.out.println(p);
@@ -67,76 +71,64 @@ public class ProductManager {
     }
 
     public void createProduct() {
-        Product product = new Product();
-        if (products.size() == 0) {
-            product.setId(1);
-        } else {
-            product.setId(products.get(products.size() - 1).getId() + 1);
+        System.out.print("Bạn muốn thêm vào bao nhiêu sản phẩm : ");
+        int n = InputMethods.getInteger();
+        for (int i = 0; i < n; i++) {
+            System.out.println("Sản phẩm thứ " + (i + 1));
+            Product product = new Product();
+            product.setId(productController.getNewId());
+            product.inputData(catalogController.findAll());
+            for (Product p : productController.findAll()) {
+                if (p.getName().toLowerCase().equals(product.getName().toLowerCase())) {
+                    System.err.println("Tên sản phẩm đã tồn tại");
+                    return;
+                }
+            }
+            System.out.println("Thêm sản phẩm thành công ✅");
+            productController.save(product);
         }
-        System.out.println("Enter the name:");
-        product.setName(InputMethods.getString());
-        System.out.println("Enter the price:");
-        product.setPrice(InputMethods.getDouble());
-        System.out.println("Enter the Description :");
-        product.setDescription(InputMethods.getString());
-        System.out.println("Enter the Stock");
-        product.setStock(InputMethods.getInteger());
-        System.out.println("Enter the status:");
-        product.setStatus(InputMethods.getBoolean());
-        productController.save(product);
     }
 
     public void deleteProduct() {
-        System.out.println("Enter the id to delete: ");
-        int id = InputMethods.getInteger();
-        Product product = productController.findById(id);
-        if (product != null) {
-            productController.delete(id);
-            System.out.println("\u001B[32mProduct with ID " + id + " has been deleted successfully.\u001B[0m");
-        } else {
-            System.err.println("Product with ID " + id + " was not found. Deletion failed.");
+        if (productController.findAll().isEmpty()){
+            System.err.println("chưa có sản phẩm nào");
+            return;
         }
+        System.out.print("Nhập vào Mã sản phẩm: ");
+        int id = InputMethods.getInteger();
+        if (productController.findById( id ) == null){
+            System.err.println("không tìm thấy sản phẩm cần xoá");
+            return;
+        }
+        System.out.println(" Đã xoá thành công ✅");
+        productController.delete(id);
     }
 
     public void updateProduct() {
-        System.out.println("Enter the id to update:");
-        int idUpdate = InputMethods.getInteger();
-        if (productController.findById(idUpdate) == null) {
-            System.err.println(" Id not found !");
-        } else {
-            System.out.println("Enter the name to change:");
-            String nameUpdate = InputMethods.getString();
-//            Catalog catalogUpdate = null;
-//            List<Catalog> catalogs = new CatalogController().findAll();
-//            for (Catalog c : catalogs) {
-//                System.out.println(c);
-//            }
-//            System.out.println("Enter the catalog to change by id :");
-//            int idC = InputMethods.getInteger();
-//            for (Catalog c : catalogs) {
-//                if (c.getId() == idC) {
-//                    catalogUpdate = c;
-//                }
-//            }
-            System.out.println("Enter the price to change");
-            Float priceUpdate = InputMethods.getFloat();
-            System.out.println("Enter the description");
-            String descriptionUpdate = InputMethods.getString();
-            System.out.println("Enter the Stock");
-            int StockUpdate = InputMethods.getInteger();
-            System.out.println("Enter the status to change:");// trạng thái cần thay đổi
-            Boolean statusUpdate = InputMethods.getBoolean();
-            Product productUpdate = new Product(idUpdate, nameUpdate, priceUpdate, descriptionUpdate, StockUpdate, statusUpdate);
-            productController.save(productUpdate);
+        if (productController.findAll().isEmpty()) {
+            System.err.println("chưa có sản phẩm  nào");
+            return;
         }
+        System.out.print("Nhập vào mã sản phẩm cần sửa: ");
+        int id = InputMethods.getInteger();
+        Product product = productController.findById(id);
+        if (product == null) {
+            System.err.println("Không có sản phẩm bạn muốn tìm");
+            return;
+        }
+        Product newProduct = new Product();
+        newProduct.setId(product.getId());
+        newProduct.inputData(catalogController.findAll());
+        System.out.println(" Bạn đã sửa thành công ✅");
+        productController.save(newProduct);
     }
 
     public static void searchByName() {
-        System.out.println("Enter the search Name:");
+        System.out.println("Nhập vào tên cần tìm :");
         String searchName = InputMethods.getString();
         List<Product> searchResults = productController.searchByName(searchName);
         if (searchResults.isEmpty()) {
-            System.err.println("product not found ");// không tim thấy sản phẩm
+            System.err.println("không tim thấy sản phẩm ");
         } else {
             for (Product p : searchResults) {
                 System.out.println(p);

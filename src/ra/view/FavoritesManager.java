@@ -15,15 +15,16 @@ public class FavoritesManager {
 
     public static void FavoritesList() {
         while (true) {
-            System.out.println("\u001B[32m╔══════════════════════════════════════╗");
-            System.out.println("\u001B[32m║             Menu-favorites          \u001B[0m ║");
-            System.out.println("\u001B[32m╟────────┬─────────────────────────────╢");
-            System.out.println("\u001B[34m║   \u001B[32m1    \u001B[34m│      show favorites list   \u001B[0m ║");
-            System.out.println("\u001B[34m║   \u001B[32m2    \u001B[34m│      add list favorites    \u001B[0m ║");
-            System.out.println("\u001B[34m║   \u001B[32m3    \u001B[34m│      delete favorites      \u001B[0m ║");
-            System.out.println("\u001B[34m║   \u001B[32m0    \u001B[34m│      Back                  \u001B[0m ║");
-            System.out.println("\u001B[33m╚════════╧═════════════════════════════╝");
-            System.out.println("\u001B[33mEnter your choice:                       \u001B[0m");
+            String green = "\u001B[32m";
+            System.out.println(green + "╔═════════════════════════════════════╗");
+            System.out.println(green + "║              Menu-favorites         ║");
+            System.out.println(green + "╟───────┬─────────────────────────────╢");
+            System.out.println(green + "║   1   │Hiên thị danh sách yêu thích ║");
+            System.out.println(green + "║   2   │Thêm vào danh sách yêu thích ║");
+            System.out.println(green + "║   3   │Xóa khỏi danh sách yêu thích ║");
+            System.out.println(green + "║   0   │Trở về                       ║");
+            System.out.println(green + "╚═══════╧═════════════════════════════╝");
+            System.out.println(green + "Nhập lựa chọn của bạn:                 ");
             int choice = InputMethods.getInteger();
             switch (choice) {
                 case 1:
@@ -50,7 +51,7 @@ public class FavoritesManager {
 
     public static void addToFavorites() {
         List<Integer> listFavorites = userLogin.getFavorites();
-        System.out.println("Please enter the product id"); // nhập id sản phẩm
+        System.out.println("Nhập id sản phẩm");
         int id = InputMethods.getInteger();
         ProductController productController = new ProductController();
         if (productController.findById(id) == null) {
@@ -60,12 +61,12 @@ public class FavoritesManager {
         for (Integer idfavorite : listFavorites
         ) {
             if (idfavorite == id) {
-                System.out.println("already in favorites"); // đã có trong danh sách yêu thích
+                System.out.println("Đã có trong danh sách yêu thích");
                 return;
             }
         }
         listFavorites.add(id);
-        System.out.println("add to favorites success"); // thêm vào yêu thích thành công
+        System.out.println("Thêm vào yêu thích thành công");
     }
 
 
@@ -73,7 +74,7 @@ public class FavoritesManager {
         List<Integer> listFavorites = userLogin.getFavorites();
         ProductController productController = new ProductController();
         if (listFavorites.isEmpty()) {
-            System.err.println("List is empty "); // danh sách rỗng
+            System.err.println("Danh sách rỗng");
             return;
         }
         for (Integer id : listFavorites
@@ -86,11 +87,11 @@ public class FavoritesManager {
     public static void deleteFavorites() {
         List<Integer> listFavorites = userLogin.getFavorites();
         if (listFavorites.isEmpty()) {
-            System.err.println("Favorite list is empty."); // Danh sách yêu thích rỗng
+            System.err.println("Danh sách yêu thích rỗng");
             return;
         }
 
-        System.out.println("Enter the product ID to delete:"); // Nhập ID sản phẩm cần xóa
+        System.out.println("Nhập ID sản phẩm cần xóa");
         int id = InputMethods.getInteger();
         boolean found = false;
 
@@ -98,12 +99,12 @@ public class FavoritesManager {
             if (id == listFavorites.get(i)) {
                 listFavorites.remove(i);
                 found = true;
-                System.out.println("Successfully deleted."); // Xóa thành công
+                System.out.println("Xóa thành công");
                 break;
             }
         }
         if (!found) {
-            System.err.println("Product ID not found in favorites."); // Không tìm thấy ID sản phẩm trong danh sách yêu thích
+            System.err.println("Không tìm thấy ID sản phẩm trong danh sách yêu thích");
         }
     }
 

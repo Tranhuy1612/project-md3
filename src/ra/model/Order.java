@@ -17,6 +17,10 @@ public class Order implements Serializable {
     private String address;
     private byte status = 0;
     private List<CartItem> orderDetail = new ArrayList<>();
+    private RolePayment payment;
+    private int wallet;
+    private List<Feedback> feedbackList = new ArrayList<>();
+
 
     public Order() {
     }
@@ -104,8 +108,32 @@ public class Order implements Serializable {
         this.status = status;
     }
 
+    public RolePayment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(RolePayment payment) {
+        this.payment = payment;
+    }
+
+    public int getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(int wallet) {
+        this.wallet = wallet;
+    }
+
+    public List<Feedback> getFeedbackList() {
+        return feedbackList;
+    }
+
+    public void setFeedbackList(List<Feedback> feedbackList) {
+        this.feedbackList = feedbackList;
+    }
+
     @Override
     public String toString() {
-        return "ID : "+id +"|Name : "+receiver +"|Total : "+total +"| Date : "+ buyDate+ "|Status : " + Message.getStatusByCode(status);
+        return "ID : " + id + "|Tên  : " + receiver + "|Tổng : " + total + "| Ngày : " + buyDate + "|Trạng thái : " + Message.getStatusByCode(status);
     }
 }

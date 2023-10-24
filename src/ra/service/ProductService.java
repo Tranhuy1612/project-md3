@@ -2,11 +2,16 @@ package ra.service;
 
 import ra.model.Product;
 import ra.util.DataBase;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductService implements IGenericService<Product, Integer> {
+    //Tạo đối tượng User, đây là nơi lưu trữ dữ liệu người dùng trong bộ nhớ.
     private List<Product> products;
+
+
+    // Một đối tượng của lớp DataBase, được sử dụng để đọc và ghi dữ liệu từ file.
     private DataBase<Product> productData = new DataBase();
 
     public ProductService() {
@@ -64,5 +69,14 @@ public class ProductService implements IGenericService<Product, Integer> {
         }
         return productListSearch;
     }
-
+    public int getNewId() {
+        int max = 0;
+        for (Product p : products
+        ) {
+            if (p.getId() > max) {
+                max = p.getId();
+            }
+        }
+        return max + 1;
+    }
 }

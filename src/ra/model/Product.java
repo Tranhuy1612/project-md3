@@ -1,12 +1,15 @@
 package ra.model;
 
+import ra.config.InputMethods;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class Product implements Serializable {
     private int id;
     private String name;
     private double price;
-    private Catalog productCatalog;
+    private Catalog catalog;
     private String description;
     private int stock; //hàng trong kho
     private boolean status = true;
@@ -15,22 +18,11 @@ public class Product implements Serializable {
 
     }
 
-    public Product(Catalog productCatalog) {
-        this.productCatalog = productCatalog;
-    }
-
-    public Catalog getProductCatalog() {
-        return productCatalog;
-    }
-
-    public void setProductCatalog(Catalog productCatalog) {
-        this.productCatalog = productCatalog;
-    }
-
-    public Product(int id, String name, double price, String description, int stock, boolean status) {
+    public Product(int id, String name, double price, Catalog catalog, String description, int stock, boolean status) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.catalog = catalog;
         this.description = description;
         this.stock = stock;
         this.status = status;
@@ -60,6 +52,14 @@ public class Product implements Serializable {
         this.price = price;
     }
 
+    public Catalog getCatalog() {
+        return catalog;
+    }
+
+    public void setCatalog(Catalog catalog) {
+        this.catalog = catalog;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -84,11 +84,47 @@ public class Product implements Serializable {
         this.status = status;
     }
 
+    public void inputData(List<Catalog> list) {
+        System.out.print("Nhập tên sản phẩm: ");
+        this.name = InputMethods.getString();
+        System.out.print("Nhập giá sản phẩm(lớn hơn 0): ");
+        this.price = InputMethods.getDouble();
+        System.out.print("Nhập vào mô tả: ");
+        this.description = InputMethods.getString();
+        System.out.print("Nhập vào stock: ");
+        this.stock = InputMethods.getInteger();
+        for (Catalog c : list) {
+            System.out.println(c);
+        }
+        while (true) {
+            boolean flag = false;
+            System.out.print("Vui lòng chọn ID danh mục: ");
+            int id = InputMethods.getInteger();
+            for (Catalog c : list) {
+                if (c.getId() == id) {
+                    this.catalog = c;
+                    flag = true;
+                    break;
+                }
+            }
+            if (flag) {
+                break;
+            } else {
+                System.err.println("Không có danh mục đó, Vui lòng chọn lại: ");
+            }
+        }
+    }
+
     @Override
     public String toString() {
-        String yellow = "\u001B[33m";
-        System.out.println(yellow + " | Name               | Price                       | Description                | Stock             | Status");
-        System.out.println("------------------------------------------------------------------");
-        return " ID : " + id + " | Name : " + name + " | Price : " + price + "đ" + " | Description :" + description + "| Stock : " + stock + "| status :" + (status ? "sell" : "not sold");
+        String green = "\u001B[32m";
+        String reset = "\u001B[0m";
+        String header = green + " | Tên sản phẩm       | Giá           | Mô tả            | Kho          |  Danh mục        | Trạng thái\n";
+        String separator = "------------------------------------------------------------------\n";
+        String data = " ID : " + id + " | Tên : " + name + " | Giá : " + price + "đ" + " | Mô tả :" + description +
+                "| Kho : " + stock + " Danh mục :" + catalog.getName() + "| Trạng thái :" + (status ? "Bán" : "không bán");
+        return header + reset + separator + data;
     }
+
 }
+

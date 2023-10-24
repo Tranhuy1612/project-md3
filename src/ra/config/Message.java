@@ -4,13 +4,13 @@ public class Message {
     public static String getStatusByCode(byte code){
         switch (code){
             case 0 :
-                return "Waiting to confirm";
+                return "Đang chờ xác nhận";
             case 1:
-                return "Accepted";
+                return "Đã được chấp nhận";
             case 2:
-                return "Canceled";
+                return "Đã hủy";
             default:
-                return  "Invalid";
+                return  "Không hợp lệ";
         }
     }
 }

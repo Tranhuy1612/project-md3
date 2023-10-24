@@ -20,6 +20,7 @@ public class User implements Serializable {
     private Set<RoleName> roles = new HashSet<>();
     private List<CartItem> cart = new ArrayList<>();
     private List<Integer> favorites = new ArrayList<>();
+    private double wallet = 0;
 
     public User() {
     }
@@ -122,7 +123,7 @@ public class User implements Serializable {
     }
 
     public void changePassword() {
-        System.out.println("The new password is :");
+        System.out.println("Mật khẩu mới là  :");
         this.password = InputMethods.getPassword();
     }
 
@@ -133,12 +134,23 @@ public class User implements Serializable {
     public List<Integer> getFavorites() {
         return favorites;
     }
+
     public void setFavorites(List<Integer> favorites) {
         this.favorites = favorites;
     }
 
+    public double getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(double wallet) {
+        this.wallet = wallet;
+    }
+
     @Override
     public String toString() {
+        String green = "\u001B[32m";
+
         String role;
         if (roles.contains(RoleName.ADMIN)) {
             role = "ADMIN";
@@ -147,7 +159,7 @@ public class User implements Serializable {
         } else {
             role = "USER";
         }
-        return "ID : " + id + " | Name : " + name + "| Username : " + username + " | Role : " + role + "| Status : " + (status ? "UnLock" : "Lock");
+        return green + "ID : " + id + " | Tên : " + name + "| Username : " + username + " | Role : " + role + "| Trạng thái : " + (status ? "Mở khóa" : "Khóa");
     }
 
 

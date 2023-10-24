@@ -1,6 +1,5 @@
 package ra.service;
 
-import ra.model.CartItem;
 import ra.model.Order;
 import ra.util.DataBase;
 import ra.view.Navbar;
@@ -75,8 +74,7 @@ public class OrderService {
 
     public int getNewId() {
         int max = 0;
-        for (Order o : orders
-        ) {
+        for (Order o : orders) {
             if (o.getId() > max) {
                 max = o.getId();
             }

@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class InputMethods {
     public static final String ERROR_USENAME = "===>> UseName phải lớn hơn 5 kí tự";
-
     public static final String ERROR_PASS = "===>> password phải lớn hơn 5 kí tự và không chứa khoảng trắng";
     public static final String ERROR_PHONE = "===>> Số điện thoại bạn nhập không đúng định dạng";
     public static final String ERROR_EMAIL = "===>> Email không đúng định dạng";

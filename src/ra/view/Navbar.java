@@ -20,17 +20,18 @@ public class Navbar {
 
     public static void menuStore() {
         while (true) {
-            System.out.println("\u001B[36m╔══════════════════════════════════════╗");
-            System.out.println("║           \u001B[1mMenu-Store\u001B[0m                 ║");
-            System.out.println("╟────────┬─────────────────────────────╢");
-            System.out.println("║ \u001B[32mOption \u001B[32m│         \u001B[32mDescription         ║");
-            System.out.println("╟────────┼─────────────────────────────╢");
-            System.out.println("║   \u001B[1m1\u001B[0m    │           \u001B[1mLogin\u001B[0m             ║");
-            System.out.println("║   \u001B[1m2\u001B[0m    │          \u001B[1mRegister\u001B[0m           ║");
-            System.out.println("║   \u001B[1m3\u001B[0m    │        \u001B[1mView product\u001B[0m         ║");
-            System.out.println("║   \u001B[1m4\u001B[0m    │            \u001B[1mExit\u001B[0m             ║");
-            System.out.println("╚════════╧═════════════════════════════╝");
-            System.out.println("Enter your choice:");
+            String green = "\u001B[32m";
+            System.out.println(green + "╔═════════════════════════════════════╗");
+            System.out.println(green + "║           Menu-Store                ║");
+            System.out.println(green + "╟────────┬────────────────────────────╢");
+            System.out.println(green + "║Lựa chọn│       Miêu tả              ║");
+            System.out.println(green + "╟────────┼────────────────────────────╢");
+            System.out.println(green + "║   1    │       Đăng nhập            ║");
+            System.out.println(green + "║   2    │       Đăng kí              ║");
+            System.out.println(green + "║   3    │       Hiển thị sản phẩm    ║");
+            System.out.println(green + "║   4    │       Thoát                ║");
+            System.out.println(green + "╚════════╧════════════════════════════╝");
+            System.out.println("Nhập lựa chọn của bạn:");
             int choice = InputMethods.getInteger();
             switch (choice) {
                 case 1:
@@ -49,7 +50,7 @@ public class Navbar {
                     System.exit(0);
                     break;
                 default:
-                    System.err.println("please enter number from 1 to 4");
+                    System.err.println("vui lòng nhập số từ 1 đến 4");
             }
 
         }
@@ -57,23 +58,23 @@ public class Navbar {
 
     public static void menuUser() {
         while (true) {
-            System.out.println("\u001B[32m╔══════════════════════════════════════╗");
-            System.out.println("\u001B[32m║             \u001B[1mMenu-User\u001B[0m               \u001B[32m ║");
-            System.out.println("\u001B[32m╟──────┬───────────────────────────────╢");
-            System.out.println("\u001B[32m║\u001B[34mOption\u001B[32m│         \u001B[34mDescription           \u001B[32m║");
-            System.out.println("\u001B[32m╟──────┼───────────────────────────────╢");
-            System.out.println("\u001B[34m║   1  \u001B[32m│ Show list Product            \u001B[34m ║");
-            System.out.println("\u001B[34m║   2  \u001B[32m│ Product search by name       \u001B[34m ║");
-            System.out.println("\u001B[34m║   3  \u001B[32m│ Add to cart                  \u001B[34m ║");
-            System.out.println("\u001B[34m║   4  \u001B[32m│ View Cart                    \u001B[34m ║");
-            System.out.println("\u001B[34m║   5  \u001B[32m│ Order History                \u001B[34m ║");
-            System.out.println("\u001B[34m║   6  \u001B[32m│ Profile change               \u001B[34m ║");
-            System.out.println("\u001B[34m║   7  \u001B[32m│ Change Password              \u001B[34m ║");
-            System.out.println("\u001B[34m║   8  \u001B[32m│ Favorites List               \u001B[34m ║");
-            System.out.println("\u001B[34m║   0  \u001B[32m│ Log Out                      \u001B[34m ║");
-            System.out.println("\u001B[32m╚══════╧═══════════════════════════════╝");
-            System.out.println("\u001B[33mEnter your choice:                          \u001B[0m");
-
+            System.out.println("\u001B[32m╔════════════════════════════════════════╗");
+            System.out.println("\u001B[32m║           Menu-User                    ║");
+            System.out.println("\u001B[32m╟────────┬───────────────────────────────╢");
+            System.out.println("\u001B[32m║Lựa chọn│         Miêu tả               ║");
+            System.out.println("\u001B[32m╟────────┼───────────────────────────────╢");
+            System.out.println("\u001B[32m║   1    │ Hiển thị sản phẩm             ║");
+            System.out.println("\u001B[32m║   2    │ Tìm sản phẩm theo tên         ║");
+            System.out.println("\u001B[32m║   3    │ Thêm vào giỏ hàng             ║");
+            System.out.println("\u001B[32m║   4    │ Xem giỏ hàng                  ║");
+            System.out.println("\u001B[32m║   5    │ lịch sử đơn hàng              ║");
+            System.out.println("\u001B[32m║   6    │ Thay đổi hồ sơ                ║");
+            System.out.println("\u001B[32m║   7    │ Đổi mật khẩu                  ║");
+            System.out.println("\u001B[32m║   8    │ Danh sách yêu thích           ║");
+            System.out.println("\u001B[32m║   9    │ Payment (Ví)                  ║");
+            System.out.println("\u001B[32m║   0    │ Thoát                         ║");
+            System.out.println("\u001B[32m╚═════──═╧═══════════════════════════════╝");
+            System.out.println("Nhập lựa chọn của bạn:                              ");
             int choice = InputMethods.getInteger();
             switch (choice) {
                 case 1:
@@ -108,11 +109,14 @@ public class Navbar {
                     // quản lí sở thích
                     FavoritesManager.FavoritesList();
                     break;
+                case 9:
+                    payment();
+                    break;
                 case 0:
                     logOut();
                     break;
                 default:
-                    System.err.println("please enter number from 1 to 8");
+                    System.err.println("vui lòng nhập số từ 1 đến 9");
             }
             if (choice == 0) {
                 break;
@@ -120,19 +124,61 @@ public class Navbar {
         }
     }
 
+    public static void payment() {
+        while (true) {
+            System.out.println("\u001B[32m╔══════════════════════════════════════╗");
+            System.out.println("\u001B[32m║              Menu-Admin              ║");
+            System.out.println("\u001B[32m╟────────┬─────────────────────────────╢");
+            System.out.println("\u001B[32m║   1    │ Hiển thị số dư tài khoản    ║");
+            System.out.println("\u001B[32m║   2    │ Thêm tiền vào ví của bạn    ║");
+            System.out.println("\u001B[32m║   0    │ Trở về                      ║");
+            System.out.println("\u001B[32m╚════════╧═════════════════════════════╝");
+            System.out.println("Nhập lựa chọn của bạn:                            ");
+
+            int choice = InputMethods.getInteger();
+            switch (choice) {
+                case 1:
+                    showWallet();
+                    break;
+                case 2:
+                    putMoney();
+                    break;
+                case 0:
+                    Navbar.menuUser();
+                    break;
+                default:
+                    System.out.println("vui lòng nhập số từ 1 đến 2");
+            }
+        }
+    }
+
+    public static void showWallet() {
+        User walletUser = Navbar.userLogin;
+        double wallet = walletUser.getWallet();
+        System.out.println("Số dư tài khoản của bạn là: " + wallet);
+    }
+
+    public static void putMoney() {
+        System.out.println("Nhập số tiền : ");
+        double putMoney = InputMethods.getInteger();
+        System.out.println("Đã gửi tiền \uD83D\uDCB0  Thành công ");
+        double olwMoney = Navbar.userLogin.getWallet();
+        Navbar.userLogin.setWallet(olwMoney + putMoney);
+    }
+
     public static void profileChange(int id) {
         User userLogin = userController.findById(id);
         System.out.println("+----------------------------------+");
-        System.out.println("|         Personal Information     |"); // thông tin cá nhân
+        System.out.println("|         Thông tin cá nhân        |");
         System.out.println("+----------------------------------+");
-        System.out.println("| Name       | " + userLogin.getName() + "             |");
+        System.out.println("| Tên        | " + userLogin.getName() + "             |");
         System.out.println("| Email      | " + userLogin.getEmail() + "   |");
         System.out.println("| Phone      | " + userLogin.getPhoneNumber() + "          |");
         System.out.println("+----------------------------------+");
-        System.out.println("| Do you want to change your       |");// bạn có muốn thay đổi thông tin không ?
-        System.out.println("| information?                     |");
-        System.out.println("| Enter Yes to make changes        |"); // yes để đồng ý thay đổi
-        System.out.println("| --- No to escape                 |"); // no để thoát
+        System.out.println("|Bạn có muốn thay đổi thông tin không ? |");
+        System.out.println("|thông tin?                        |");
+        System.out.println("|yes để đồng ý thay đổi            |");
+        System.out.println("| --- No để thoát                  |"); // no để thoát
         System.out.println("+----------------------------------+");
 
         String check = InputMethods.getString();
@@ -146,20 +192,20 @@ public class Navbar {
             userEdit.setFavorites(userLogin.getFavorites());
             userEdit.setRoles(userLogin.getRoles());
             userEdit.setUsername(userLogin.getUsername());
-            System.out.println("Enter Name:");
+            System.out.println("Nhập tên :");
             userEdit.setName(InputMethods.getString());
-            System.out.println("Enter Email");
+            System.out.println("Nhập Email");
             userEdit.setEmail(InputMethods.getEmail());
             userEdit.setPassword(userLogin.getPassword());
-            System.out.println("Enter PhoneNumber ");
+            System.out.println("Nhập số điện thoai : ");
             userEdit.setPhoneNumber((InputMethods.getPhoneNumber()));
-            System.out.println("Enter Yes to make changes --- No escape");//nhập yes để xác nhận thay đổi -----No hủy bỏ
+            System.out.println("Nhập yes để xác nhận thay đổi -----No hủy bỏ");
             String confirmChoice = InputMethods.getString();
             if (confirmChoice.trim().toLowerCase().equals("yes")) {
                 userController.save(userEdit);
-                System.out.println("successful change"); // thay đổi thành công
+                System.out.println("Thay đổi thành công");
             } else {
-                System.out.println(" change has been canceled"); // hủy bỏ thay đổi
+                System.out.println("Hủy bỏ thay đổi");
             }
 
         }
@@ -168,15 +214,15 @@ public class Navbar {
     public static void menuAdmin() {
         while (true) {
             System.out.println("\u001B[32m╔══════════════════════════════════════╗");
-            System.out.println("\u001B[32m║              Menu-Admin             \u001B[0m ║");
+            System.out.println("\u001B[32m║              Menu-Admin              ║");
             System.out.println("\u001B[32m╟────────┬─────────────────────────────╢");
-            System.out.println("\u001B[34m║   \u001B[32m1    \u001B[34m│      Account Manager       \u001B[0m ║");
-            System.out.println("\u001B[34m║   \u001B[32m2    \u001B[34m│      Catalog Manager       \u001B[0m ║");
-            System.out.println("\u001B[34m║   \u001B[32m3    \u001B[34m│      Product Manager       \u001B[0m ║");
-            System.out.println("\u001B[34m║   \u001B[32m4    \u001B[34m│      Order Manager         \u001B[0m ║");
-            System.out.println("\u001B[34m║   \u001B[32m0    \u001B[34m│      Logout                \u001B[0m ║");
-            System.out.println("\u001B[33m╚════════╧═════════════════════════════╝");
-            System.out.println("\u001B[33mEnter your choice:                       \u001B[0m");
+            System.out.println("\u001B[32m║   1    │      Quản lí tài khoản      ║");
+            System.out.println("\u001B[32m║   2    │      Quản lí danh mục       ║");
+            System.out.println("\u001B[32m║   3    │      Quản lí sản phẩm       ║");
+            System.out.println("\u001B[32m║   4    │      Quản lý đơn hàng       ║");
+            System.out.println("\u001B[32m║   0    │      Trở về                 ║");
+            System.out.println("\u001B[32m╚════════╧═════════════════════════════╝");
+            System.out.println("Nhập lựa chọn của bạn:                           ");
 
             int choice = InputMethods.getInteger();
             switch (choice) {
@@ -200,7 +246,7 @@ public class Navbar {
                     logOut();
                     break;
                 default:
-                    System.err.println("please enter number from 1 to 4");
+                    System.err.println("vui lòng nhập số từ 1 đến 4 ");
             }
             if (choice == 0) {
                 break;
@@ -210,42 +256,42 @@ public class Navbar {
 
     public static void menuAccountManager() {
         System.out.println("\u001B[32m╔══════════════════════════════════════╗");
-        System.out.println("\u001B[32m║          Menu-Account-Manager       \u001B[0m ║");
+        System.out.println("\u001B[32m║          Menu-Account-Manager        ║");
         System.out.println("\u001B[32m╟────────┬─────────────────────────────╢");
-        System.out.println("\u001B[34m║   \u001B[32m1    \u001B[34m│      Show All Account      \u001B[0m ║");
-        System.out.println("\u001B[34m║   \u001B[32m2    \u001B[34m│   Block/Unblock Account    \u001B[0m ║");
-        System.out.println("\u001B[34m║   \u001B[32m3    \u001B[34m│            Back            \u001B[0m ║");
-        System.out.println("\u001B[33m╚════════╧═════════════════════════════╝");
-        System.out.println("\u001B[33mEnter your choice:                       \u001B[0m");
+        System.out.println("\u001B[32m║   1    │   Hiển thị tất cả tài khoản ║");
+        System.out.println("\u001B[32m║   2    │   Chặn/Bỏ chặn tài khoản    ║");
+        System.out.println("\u001B[32m║   3    │   Trở về                    ║");
+        System.out.println("\u001B[32m╚════════╧═════════════════════════════╝");
+        System.out.println("Nhập lựa chọn của bạn:                           ");
 
 
     }
 
     public static void menuCart() {
         System.out.println("\u001B[32m╔══════════════════════════════════════╗");
-        System.out.println("\u001B[32m║              Menu-Cart              \u001B[0m ║");
+        System.out.println("\u001B[32m║              Menu-Cart               ║");
         System.out.println("\u001B[32m╟────────┬─────────────────────────────╢");
-        System.out.println("\u001B[34m║   \u001B[32m1    \u001B[34m│         Show Cart          \u001B[0m ║");
-        System.out.println("\u001B[34m║   \u001B[32m2    \u001B[34m│         Change Quantity    \u001B[0m ║");
-        System.out.println("\u001B[34m║   \u001B[32m3    \u001B[34m│         Delete Item        \u001B[0m ║");
-        System.out.println("\u001B[34m║   \u001B[32m4    \u001B[34m│         Delete All         \u001B[0m ║");
-        System.out.println("\u001B[34m║   \u001B[32m5    \u001B[34m│         Check out          \u001B[0m ║");
-        System.out.println("\u001B[34m║   \u001B[32m6    \u001B[34m│         Back               \u001B[0m ║");
-        System.out.println("\u001B[33m╚════════╧═════════════════════════════╝");
-        System.out.println("\u001B[33mEnter your choice:                       \u001B[0m");
+        System.out.println("\u001B[32m║   1    │    Hiển thị giỏ hàng        ║");
+        System.out.println("\u001B[32m║   2    │    Thay đổi số lượng        ║");
+        System.out.println("\u001B[32m║   3    │    Xóa Item                 ║");
+        System.out.println("\u001B[32m║   4    │    Xóa tất cả               ║");
+        System.out.println("\u001B[32m║   5    │    Thanh toán               ║");
+        System.out.println("\u001B[32m║   6    │    Trở về                   ║");
+        System.out.println("\u001B[32m╚════════╧═════════════════════════════╝");
+        System.out.println("Nhập lựa chọn của bạn     :                      ");
 
     }
 
     public static void login() {
-        System.out.println("-------------Sign-In-------------");
-        System.out.println("Enter username");
+        System.out.println("-------------Đăng nhập-------------");
+        System.out.println("Nhập username");
         String username = InputMethods.getUseName();
-        System.out.println("Enter password");
+        System.out.println("Nhập password");
         String password = InputMethods.getPassword();
         // kiem tra dang nhap
         User user = userController.login(username, password);
         if (user == null) {
-            System.err.println("Login failed"); // đăng nhập thất bại
+            System.err.println("Đăng nhập thất bại");
         } else {
             if (user.getRoles().contains(RoleName.ADMIN)) {
                 userLogin = user;
@@ -255,7 +301,7 @@ public class Navbar {
                     userLogin = user;
                     menuUser();
                 } else {
-                    System.err.println("Your account is blocked"); //  tài khoản của bạn đã bị khóa
+                    System.err.println("Tài khoản của bạn đã bị khóa");
                     login();
                 }
             }
@@ -264,52 +310,34 @@ public class Navbar {
     }
 
     public static void register() {
-        System.out.println("-------------Register-------------");
+        System.out.println("-------------Đăng kí-------------");
         User user = new User();
         user.setId(userController.getNewId());
         System.out.println("ID : " + user.getId());
-        System.out.println("Enter Name");
+        System.out.println("Nhập tên :");
         user.setName(InputMethods.getUseName());
-        System.out.println("Enter Email");
+        System.out.println("Nhập Email :");
         user.setEmail(InputMethods.getEmail());
-        System.out.println("Enter phone");
+        System.out.println("Nhập số điện thoại :");
         user.setPhoneNumber(InputMethods.getPhoneNumber());
-        System.out.println("Enter Username");
+        System.out.println("Nhập Username");
         user.setUsername(InputMethods.getUseName());
-        System.out.println("Enter Password");
+        System.out.println("Nhập Password");
         user.setPassword(InputMethods.getPassword());
-//        System.out.println("Enter Roles: (etc: user,admin,...)");
-//        String roles = InputMethods.getString();
-//        String[] stringRoles = roles.split(",");
-//        List<String> listRoles = Arrays.asList(stringRoles);
-//        for (String r : stringRoles) {
-//            // loi dụng co che break
-//            switch (r) {
-//                case "admin":
-//                    user.getRoles().add(RoleName.ADMIN);
-//                case "manager":
-//                    user.getRoles().add(RoleName.MANAGER);
-//                case "user":
-//                    user.getRoles().add(RoleName.USER);
-//                default:
-//                    user.getRoles().add(RoleName.USER);
-//            }
-//        }
 
-//        user.getRoles() = listRoles.stream().map(
-//                r->{
-//                    //
-//                }
-//        ).collect(Collectors.toList());
         for (User u : userController.findAll()) {
-            if (u.getUsername().equals(user.getUsername()) && u.getPhoneNumber().equals(user.getPhoneNumber()) && u.getEmail().equals(user.getEmail())) {
-                System.err.println("Account already exists"); // tài khoản đã tồn tại
+            String existingPhoneNumber = u.getPhoneNumber();
+            if (existingPhoneNumber != null &&
+                    (existingPhoneNumber.equals(user.getPhoneNumber()) ||
+                            u.getUsername().equals(user.getUsername()) ||
+                            u.getEmail().equals(user.getEmail()))) {
+                System.err.println("Tài khoản đã tồn tại");
                 return;
             }
         }
         userController.save(user);
-        System.out.println("\u001B[34m" + "Sign Up Success" + "\u001B[0m");
-        System.out.println("\u001B[34m" + "please log in" + "\u001B[0m");
+        System.out.println("\u001B[34m" + "Đăng ký thành công" + "\u001B[0m");
+        System.out.println("\u001B[34m" + "Vui lòng hãy đăng nhập" + "\u001B[0m");
         login();
 
     }
